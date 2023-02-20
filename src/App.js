@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./components/Home";
+import NavB from "./components/NavB";
+import About from "./components/About";
+import AddNote from "./components/AddNote";
+import ReadNotes from "./components/ReadNotes";
 
-function App() {
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import EditNote from "./components/EditNote";
+import EditNoteFromIn from "./components/EditNoteFromIn";
+
+
+
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <BrowserRouter>
+    <NavB />
+    <Routes>
+      <Route path='/' element={<Home />}></Route>
+      <Route path='/addNote' element={<AddNote />}></Route>
+      <Route path='/about' element={<About/>}></Route>
+      <Route path="/editNotes/:userId" element={<EditNote />}></Route>
+      <Route path="/editNoteFromIn/:userId" element={<EditNoteFromIn />}></Route>
+      <Route path="/readNotes/:userId" element={<ReadNotes />}></Route>
+    </Routes>
+    
+  </BrowserRouter>
+ 
   );
 }
 
